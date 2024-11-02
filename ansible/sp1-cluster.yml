@@ -1,0 +1,14 @@
+# Demo cluster and Docker registry installation play
+---
+  - name: Frontend node setup
+    hosts: frontend
+    become: true
+    roles:
+      - frontend
+  
+  - name: Backend nodes setup
+    hosts: backend
+    become: true
+    roles:
+      - backend
+
