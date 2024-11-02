@@ -4,9 +4,10 @@
 
 FROM ubuntu:20.04
 
-RUN apt-get update; \
-    apt-get install -y python3;
-RUN pip3 install flask
+RUN sudo apt-get update; \
+    sudo apt-get install -y python3; \
+    sudo apt-get install -y python3-pip;
+RUN sudo pip3 install flask
 
 COPY python /opt/backend
 
