@@ -1,7 +1,7 @@
 - name: Install frontend in Docker container
   docker_container:
     name: frontend
-    image: ghcr.io/honzaulrych/kiv-dce-sp1-ulrych-frontend
+    image: ghcr.io/honzaulrych/kiv-dce-sp1-ulrych-frontend:latest
     state: started
     restart_policy: unless-stopped
     pull: yes

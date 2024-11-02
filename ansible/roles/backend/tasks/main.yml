@@ -1,7 +1,7 @@
 - name: Install backend in Docker container
   docker_container:
     name: backend
-    image: ghcr.io/honzaulrych/kiv-dce-sp1-ulrych-backend
+    image: ghcr.io/honzaulrych/kiv-dce-sp1-ulrych-backend:latest
     state: started
     restart_policy: unless-stopped
     pull: yes
