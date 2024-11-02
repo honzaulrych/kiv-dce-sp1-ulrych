@@ -1,0 +1,10 @@
+- name: Install nginx
+  docker_container:
+    name: my-nginx
+    image: nginx
+    state: started
+    restart_policy: unless-stopped
+    pull: yes
+    ports:
+    - "80:80"
+

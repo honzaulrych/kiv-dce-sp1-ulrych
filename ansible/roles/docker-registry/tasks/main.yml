@@ -1,0 +1,17 @@
+- name: Create registry directory
+  file:
+    path: /opt/docker-registry
+    state: directory
+    mode: 0755
+
+- name: Install Docker registry in Docker container
+  docker_container:
+    name: registry
+    image: registry:2
+    state: started
+    restart_policy: unless-stopped
+    pull: yes
+    ports:
+    - "5000:5000"
+    volumes:
+    - /opt/docker-registry:/var/lib/registry
