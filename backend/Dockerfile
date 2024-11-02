@@ -2,9 +2,10 @@
 # Simple backend demo server image
 #
 
-FROM ghcr.io/maxotta/kiv-ds-docker:latest
+FROM ubuntu:20.04
 
-RUN yum -q -y install python3
+RUN apt update
+RUN apt install python3
 RUN pip3 install flask
 
 COPY python /opt/backend
