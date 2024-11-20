@@ -1,16 +1,19 @@
-#
-# Simple backend demo server image
-#
-
 FROM ubuntu:20.04
 
-RUN apt-get update; \
-    apt-get install -y python3; \
-    apt-get install -y python3-pip;
-RUN pip3 install flask
+LABEL maintainer="ulrych@students.zcu.cz" \
+      org.opencontainers.image.source="https://github.com/honzaulrych/hello-microservice.git"
 
-COPY python /opt/backend
+ENV DEBIAN_FRONTEND noninteractive
 
-ENTRYPOINT [ "/usr/bin/python3", "/opt/backend/simple-backend.py" ]
+RUN apt -y update
+RUN apt -y install python3
+RUN apt -y install python3-pip
+RUN pip3 install Flask
+RUN apt-get -y install curl
 
-# EOF
+RUN mkdir /service
+COPY hello-service.py /service/hello-service.py
+
+EXPOSE 5123
+
+CMD ["python3", "/service/hello-service.py"]
