@@ -12,8 +12,8 @@ RUN pip3 install Flask
 RUN apt-get -y install curl
 
 RUN mkdir /service
-COPY hello-service.py /service/hello-service.py
+COPY python/simple-backend.py /service/simple-backend.py
 
 EXPOSE 5123
 
-CMD ["python3", "/service/hello-service.py"]
+CMD ["python3", "/service/simple-backend.py"]
