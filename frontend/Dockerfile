@@ -6,9 +6,9 @@ FROM ubuntu:20.04
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get install -y epel-release
-RUN apt-get install -y nginx
-RUN rm -rf /usr/share/nginx/html
+RUN apt-get install -y epel-release; \
+    apt-get install -y nginx; \
+    rm -rf /usr/share/nginx/html;
 
 # COPY html /usr/share/nginx/html
 # COPY config/backend-upstream.conf /etc/nginx/conf.d/backend-upstream.conf
