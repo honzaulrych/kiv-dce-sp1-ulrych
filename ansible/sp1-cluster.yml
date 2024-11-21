@@ -4,7 +4,7 @@
     hosts: frontend
     become: true
     roles:
-      - frontend
+      - nginx
   
   - name: Backend nodes setup
     hosts: backend

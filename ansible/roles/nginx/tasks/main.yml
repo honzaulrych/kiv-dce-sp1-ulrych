@@ -1,9 +1,23 @@
-- name: Install nginx
+- name: Create a directory for configuration file
+  file:
+    path: /var/nginx
+    state: directory
+    mode: 644
+
+- name: Create configuration from template
+  template:
+    src: ../config/nginx.conf
+    dest: /var/nginx/nginx.conf
+    force: yes
+
+- name: Install nginx with the configuration
   docker_container:
     name: my-nginx
     image: nginx
     state: started
     restart_policy: unless-stopped
+    volumes:
+      - /var/nginx/nginx.conf:/etc/nginx/nginx.conf
     pull: yes
     ports:
     - "80:80"
