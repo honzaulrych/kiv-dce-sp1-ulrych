@@ -133,3 +133,11 @@ resource "local_file" "hosts_cfg" {
     })
   filename = "../dynamic_inventories/cluster"
 }
+
+resource "local_file" "nginx_cfg" {
+  content = templatefile("config.tmpl",
+    {
+      backend_nodes = opennebula_virtual_machine.backend-node.*.ip
+    })
+  filename = "../dynamic_inventories/backend-proxy.conf"
+}
