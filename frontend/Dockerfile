@@ -15,4 +15,4 @@ RUN apt-get install -y epel-release; \
 # COPY config/backend-proxy.conf /etc/nginx/default.d/backend-proxy.conf
 COPY config/backend-proxy.conf /etc/nginx/default.d/backend-proxy.conf
 
-ENTRYPOINT [ "/usr/sbin/nginx && tail -F /var/log/nginx/access.log /var/log/nginx/error.log" ]
+CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
