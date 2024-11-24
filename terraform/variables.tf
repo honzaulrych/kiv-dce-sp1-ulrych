@@ -11,6 +11,11 @@ variable "opennebula_password"  {
 variable "cluster_size" {
     description = "Number of cluster nodes"
     default = 3
+    
+    validation {
+        condition = var.cluster_size >= 1 && var.cluster_size <= 3
+        error_message = "Cluster size must be between 1 and 3"
+    }
 }
 variable "ssh_pubkey" {
     description = "SSH public key used for login as root into the VM instance"
